@@ -7,7 +7,7 @@ type Props = {};
 
 const Page = (props: Props) => {
   return (
-    <div className="h-full">
+    <div className="h-full overflow-hidden">
       <EditorProvider>
         <ConnectionsProvider>
           <EditorCanvas />

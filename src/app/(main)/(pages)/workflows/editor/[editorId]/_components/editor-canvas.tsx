@@ -28,6 +28,7 @@ import { v4 } from "uuid";
 import { EditorCanvasDefaultCardTypes } from "@/lib/constants";
 import FlowInstance from "./flow-instance";
 import EditorCanvasSidebar from "./editor-canvas-sidebar";
+import { onGetNodesEdges } from "../../../_actions/workflow-connections";
 
 type Props = {};
 
@@ -162,24 +163,24 @@ const EditorCanvas = (props: Props) => {
     []
   );
 
-  //   const onGetWorkFlow = async () => {
-  //     setIsWorkFlowLoading(true);
-  //     const response = await onGetNodesEdges(pathname.split("/").pop()!);
-  //     if (response) {
-  //       setEdges(JSON.parse(response.edges!));
-  //       setNodes(JSON.parse(response.nodes!));
-  //       setIsWorkFlowLoading(false);
-  //     }
-  //     setIsWorkFlowLoading(false);
-  //   };
+  const onGetWorkFlow = async () => {
+    setIsWorkFlowLoading(true);
+    const response = await onGetNodesEdges(pathname.split("/").pop()!);
+    if (response) {
+      setEdges(JSON.parse(response.edges!));
+      setNodes(JSON.parse(response.nodes!));
+      setIsWorkFlowLoading(false);
+    }
+    setIsWorkFlowLoading(false);
+  };
 
-  //   useEffect(() => {
-  //     onGetWorkFlow();
-  //   }, []);
+  useEffect(() => {
+    onGetWorkFlow();
+  }, []);
 
   return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={70}>
+      <ResizablePanel defaultSize={70} className="h-full overflow-hidden">
         <div className="flex h-full items-center justify-center">
           <div
             style={{ width: "100%", height: "100%", paddingBottom: "70px" }}
@@ -238,7 +239,10 @@ const EditorCanvas = (props: Props) => {
         </div>
       </ResizablePanel>
       <ResizableHandle />
-      <ResizablePanel defaultSize={40} className="relative sm:block">
+      <ResizablePanel
+        defaultSize={40}
+        className="relative sm:block h-full overflow-x-hidden overflow-y-auto"
+      >
         {isWorkFlowLoading ? (
           <div className="absolute flex h-full w-full items-center justify-center">
             <svg

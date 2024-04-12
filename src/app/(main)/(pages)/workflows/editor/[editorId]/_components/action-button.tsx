@@ -58,11 +58,7 @@ const ActionButton = ({
     if (response) {
       nodeConnection.setNotionNode((prev: any) => ({
         ...prev,
-        content: {
-          name: "",
-          kind: "",
-          type: "",
-        },
+        content: "",
       }));
     }
   }, [nodeConnection.notionNode]);
@@ -170,7 +166,6 @@ const ActionButton = ({
     }
   };
   return renderActionButton();
-  return <div>render</div>;
 };
 
 export default ActionButton;

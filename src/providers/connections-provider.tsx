@@ -15,19 +15,11 @@ export type ConnectionProviderProps = {
     accessToken: string;
     databaseId: string;
     workspaceName: string;
-    content: {
-      name: string;
-      kind: string;
-      type: string;
-    };
+    content: string;
   };
   workflowTemplate: {
     discord?: string;
-    notion?: {
-      name: string;
-      kind: string;
-      type: string;
-    };
+    notion?: string;
     slack?: string;
   };
   setNotionNode: React.Dispatch<React.SetStateAction<any>>;
@@ -45,11 +37,7 @@ export type ConnectionProviderProps = {
   setWorkFlowTemplate: React.Dispatch<
     React.SetStateAction<{
       discord?: string;
-      notion?: {
-        name: string;
-        kind: string;
-        type: string;
-      };
+      notion?: string;
       slack?: string;
     }>
   >;
@@ -73,19 +61,11 @@ const InitialValues: ConnectionProviderProps = {
     accessToken: "",
     databaseId: "",
     workspaceName: "",
-    content: {
-      name: "",
-      kind: "",
-      type: "",
-    },
+    content: "",
   },
   workflowTemplate: {
     discord: "",
-    notion: {
-      name: "",
-      kind: "",
-      type: "",
-    },
+    notion: "",
     slack: "",
   },
   slackNode: {

@@ -32,10 +32,10 @@ const GoogleFileDetails = ({ gFile, nodeConnection, title }: Props) => {
               onClick={() =>
                 onAddTemplate(nodeConnection, title, gFile[detail])
               }
-              className="flex cursor-pointer gap-2 rounded-full bg-white px-3 py-1 text-gray-500"
+              className="flex cursor-pointer gap-2 rounded-lg bg-white px-3 py-1 text-gray-500"
             >
               {detail}:{" "}
-              <CardDescription className="text-black">
+              <CardDescription className="text-black break-all">
                 {gFile[detail]}
               </CardDescription>
             </div>

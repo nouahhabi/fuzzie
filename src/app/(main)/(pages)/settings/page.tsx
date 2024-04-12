@@ -8,7 +8,6 @@ type Props = {};
 
 const Settings = async (props: Props) => {
   const authUser = await currentUser();
-  console.log("user id", authUser.id);
   if (!authUser) return null;
 
   const user = await db.user.findUnique({ where: { clerkId: authUser.id } });
